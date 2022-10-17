@@ -3,5 +3,5 @@ Das Bash-Script diente zum testen des CAN-Monitor "canmoni" und erzeugt alle 2 S
 
 Installation:
 nach dem download kann die Datei "cansendrandom"
-in /usr/bin/ kopiert und mit sudo chmod 755 /usr/bin/cansendrandom ausführbar gemacht werden.
-So kann durch Eingabe von cansendrando das Script gestartet werden.
+in "/usr/bin/" kopiert und mit "sudo chmod 755 /usr/bin/cansendrandom" ausführbar gemacht werden.
+So kann durch Eingabe von "cansendrandom" das Script gestartet werden.
