@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# set -xv # -> for debugging
+
+echo "++++++Send random adress and data (max. 10 byte) over CAN von M: Schlewitt++++++"
+
+if [ ! -z "$1" ];
+ then
+        echo "Program ist aktiv"
+        count="0"
+        while [ $count -lt 5000 ]
+        do
+        random_adress=$(shuf -i 100-799 -n1)
+        function random_data()
+        {
+         i=$(shuf -i 1-5 -n1)
+
+         case $i in
+         1)
+          openssl rand -hex 2;;
+         2)
+          openssl rand -hex 4;;
+         3)
+          openssl rand -hex 6;;
+         4)
+          openssl rand -hex 8;;
+         5)
+          openssl rand -hex 10;;
+        esac
+        }
+
+cansend $1 $random_adress#$(random_data)
+count=$[$count+1]
+sleep 2
+done
+
+else
+echo -e "Es wurde keine Schnittstelle zum CanBus [z.B. can0] übergeben"
+echo -e "Programm beendet"
+fi
+
+#echo "Adress   = "$random_adress
+#echo "Data     = $(random_data)"
